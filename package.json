@@ -1,0 +1,30 @@
+{
+  "name": "etorn_caesar",
+  "version": "1.0.0",
+  "description": "Service to calculate the estimated time of the turns",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "debug": "^2.6.3",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.3",
+    "mqtt": "^2.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "mongo": "node scripts/start_mongo.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorPuig/eTornCaesar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VictorPuig/eTornCaesar/issues"
+  },
+  "homepage": "https://github.com/VictorPuig/eTornCaesar#readme"
+}
