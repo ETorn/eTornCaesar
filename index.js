@@ -32,6 +32,7 @@ var router = express.Router();              // get an instance of the express Ro
 
 // REGISTER OUR ROUTES -------------------------------
 require ('./routes/events') (router, mqttClient);
+require ('./routes/time') (router, mqttClient);
 //require ('./routes/eventType') (router, mqttClient);
 app.use('/', router);
 

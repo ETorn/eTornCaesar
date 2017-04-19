@@ -7,7 +7,7 @@ module.exports = {
   },
   node: {
     port: 8081,
-    address: 'http://localhost:8080'  //El port ha de coincidir amb la linia anterior
+    address: 'http://localhost:8081'  //El port ha de coincidir amb la linia anterior
   },
   dataFile: 'config/basedata.json'
 };

@@ -1,4 +1,6 @@
 var l = require('debug')('etorn:routes:events');
+var moment = require('moment');
+var timeFormat = "YYYY-MM-DD:HH:mm:ss:ZZ";
 module.exports = function(router) {
   var eTornEvent = require('../models/Event');
 
@@ -6,6 +8,8 @@ module.exports = function(router) {
   .post(function(req, res) {
     l('New Event registration');
     var event = new eTornEvent();
+
+    event.timeStamp = moment().format(timeFormat);
 
     if (req.body.eventype)
       event.eventType = req.body.eventype;
