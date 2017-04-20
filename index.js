@@ -52,3 +52,4 @@ app.use(function(err, req, res, next) {
 // =============================================================================
 app.listen(config.node.port);
 l('Express listening on ' + config.node.port);
+console.log('Magic happens in 8080');

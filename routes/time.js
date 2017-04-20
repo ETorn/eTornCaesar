@@ -6,7 +6,7 @@ var getAverageTime = funcs.getAverageTime;
 
 module.exports = function(router) {
 
-  router.route('/getAverageTime')
+  router.route('/averageTime')
     .get(function(req, res) {
         l('Generateing average time');
         getAverageTime(function(err, result) {
