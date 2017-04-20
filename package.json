@@ -16,6 +16,7 @@
   "scripts": {
     "start": "node index.js",
     "mongo": "node scripts/start_mongo.js",
+    "eraseDB": "node scripts/eraseDB.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
