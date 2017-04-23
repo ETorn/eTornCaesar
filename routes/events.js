@@ -16,6 +16,11 @@ module.exports = function(router) {
     else
       return res.json({message: 'No event type specified'})
 
+    if (req.body.storeId)
+      event.data = {storeId: req.body.storeId}
+    else
+      return res.json({message: 'No storeId specified'})
+
         event.save(function(err, newEvent) {
           if (err) {
             l('Event save failed: %s', err);
@@ -26,13 +31,13 @@ module.exports = function(router) {
       })
     .get(function(req, res) {
       l('GET /events (get list of events)')
-      eTornEvent.find(function(err, event) {
+      eTornEvent.find(function(err, foundEvent) {
         if (err) {
           l('Event find failed: %s', err);
           return res.send(err);
         }
 
-        res.json(event);
+        res.json(foundEvent);
       });
     });
 

@@ -11,7 +11,7 @@ var computeTime = function(etornEvent) {
   return etornEvent.timeStamp;
 }
 
-module.exports.getAverageTime = function getAverageTime(cb) {
+module.exports.getAverageTime = function getAverageTime(reqStoreId, cb) {
 
 
   /* Proves
@@ -29,16 +29,19 @@ module.exports.getAverageTime = function getAverageTime(cb) {
   var dateEnd = moment().toDate();
 
   EtornEvent.find({
+    data: {storeId: reqStoreId},
     timeStamp: { $lt: dateEnd, $gte: dateStart}
   })
   .sort({timeStamp: 'asc'})
   .exec(function(err, etornEvents) {
+    console.log("events", etornEvents);
     if (err)
       return cb(err);
 
     var timestamps = etornEvents.map(computeTime);
     var aproxTime = calcAvgMilis(timestamps) / 60000; // minuts amb decimals
-
+    if (!aproxTime)
+          aproxTime = 2; // Temps aproximat per el primer torn (quan no hi ha cap event al servidor)
     cb(null, aproxTime);
   });
 };
