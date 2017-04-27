@@ -17,7 +17,7 @@ l('Connecting to mongo...');
 mongoose.connect('mongodb://' + config.mongodb.address + '/etorn_caesar');
 l('Connected.')
 
-var mqttClient = mqtt.connect(config.mqtt.address, {clientId: 'mqtt_local'});
+var mqttClient = mqtt.connect(config.mqtt.address, {clientId: 'mqtt_caesar'});
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
