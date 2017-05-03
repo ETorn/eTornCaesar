@@ -51,7 +51,7 @@ module.exports.getAverageTime = function getAverageTime(reqStoreId, cb) {
 
 function calcAvgMilis(timestamps) {
 
-  var arr = timestamps.map(function (i) {return moment(i)}); //arr conte la array de timeStamps a objectes moment
+  var arr = timestamps.map(function (i) {return moment(i, timeFormat)}); //arr conte la array de timeStamps a objectes moment
 
   //diff es la array que conte les diferencies en milisegons
   var diff = _.map(
