@@ -43,7 +43,7 @@ module.exports.getAverageTime = function getAverageTime(reqStoreId, cb) {
     var storeQueue = etornEvents.length;
     var timestamps = etornEvents.map(computeTime);
     var aproxTime = calcAvgMilis(timestamps) / 60000; // minuts amb decimals
-    if (!aproxTime || storeQueue < 5)
+    if (!aproxTime || storeQueue < 3)
           aproxTime = 0; // 0 per el primer torn (quan no hi ha cap event al servidor) O quan hi han menys de 5 persones a la cua (El temps estimat seria erroni)
     cb(null, aproxTime);
   });

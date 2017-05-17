@@ -34,6 +34,8 @@ module.exports = function(router, mqttClient) {
         if (err)
           return res.json({message: err});
 
+        mqttClient.publish('etorn/store/' + req.params.store_id + '/aproxTime', '' + result);
+        console.log("aproxTime: ", result);
         res.json(result);
       });
     });
