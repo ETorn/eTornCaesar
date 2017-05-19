@@ -40,6 +40,11 @@ module.exports.getAverageTime = function getAverageTime(reqStoreId, cb) {
 
     console.log("etornEventsLength", etornEvents.length);
 
+    if (etornEvents.length == 0) {
+      console.log("No hi ha cap event en els pasats 15 minuts, retornant -1 com a aproxTime");
+      return cb(null, -1);
+    }
+
     var storeQueue = etornEvents.length;
     var timestamps = etornEvents.map(computeTime);
     var aproxTime = calcAvgMilis(timestamps) / 60000; // minuts amb decimals

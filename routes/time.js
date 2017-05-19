@@ -20,8 +20,9 @@ module.exports = function(router, mqttClient) {
       getAverageTime(id, function(err, result) {
         if (err)
           return;
-
-        mqttClient.publish('etorn/store/' + id + '/aproxTime', '' + result);
+        
+       if (result != -1) //Si el temps aproximat es -1 (no hi han events en els pasats 15 min) no notifiquem
+          mqttClient.publish('etorn/store/' + id + '/aproxTime', '' + result);
 
       });
     }
@@ -33,8 +34,9 @@ module.exports = function(router, mqttClient) {
         getAverageTime(req.params.store_id, function(err, result) {
         if (err)
           return res.json({message: err});
-
-        mqttClient.publish('etorn/store/' + req.params.store_id + '/aproxTime', '' + result);
+        
+        if (result != -1) //Si el temps aproximat es -1 (no hi han events en els pasats 15 min) no notifiquem
+          mqttClient.publish('etorn/store/' + req.params.store_id + '/aproxTime', '' + result);
         console.log("aproxTime: ", result);
         res.json(result);
       });
