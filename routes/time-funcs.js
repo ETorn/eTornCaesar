@@ -13,18 +13,6 @@ var computeTime = function(etornEvent) {
 
 module.exports.getAverageTime = function getAverageTime(reqStoreId, cb) {
 
-
-  /* Proves
-  var dateEnd = new Date();
-  dateEnd.setHours(19);
-  dateEnd.setMinutes(30);
-  dateEnd.setSeconds(00);
-
-  var dateStart = new Date();
-  dateEnd.setHours(19);
-  dateEnd.setMinutes(00);
-  dateEnd.setSeconds(00);*/
-
   var dateStart = moment().subtract(15, 'minutes').toDate();
   var dateEnd = moment().toDate();
 
