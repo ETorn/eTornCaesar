@@ -7,7 +7,6 @@ l('WELCOME');
 var config = require('./config');
 
 // Require dependencies
-var mqtt = require('mqtt');
 var express    = require('express');
 var app        = express();
 var cors = require("cors");
@@ -16,8 +15,6 @@ var mongoose   = require('mongoose');
 l('Connecting to mongo...');
 mongoose.connect('mongodb://' + config.mongodb.address + '/etorn_caesar');
 l('Connected.')
-
-var mqttClient = mqtt.connect(config.mqtt.address, {clientId: 'mqtt_caesar'});
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -31,9 +28,8 @@ app.use(cors());
 var router = express.Router();              // get an instance of the express Router
 
 // REGISTER OUR ROUTES -------------------------------
-require ('./routes/events') (router, mqttClient);
-require ('./routes/time') (router, mqttClient);
-//require ('./routes/eventType') (router, mqttClient);
+require ('./routes/events') (router);
+require ('./routes/time') (router);
 app.use('/', router);
 
 // REGISTER OUR MIDDLEWARES -------------------------------
